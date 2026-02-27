@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Runtime Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-gradient"></div>
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">JS</span>
+                <span class="logo-text">Runtime Visualizer</span>
+            </div>
+            <div class="example-selector">
+                <label for="examples">Examples:</label>
+                <select id="examples">
+                    <option value="closure">Closure</option>
+                    <option value="async">Async (setTimeout + Promise)</option>
+                    <option value="hoisting">Hoisting</option>
+                    <option value="this">this Binding</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Panel - Code Editor -->
+            <section class="code-panel">
+                <div class="panel-header">
+                    <h2>Code Editor</h2>
+                    <div class="file-tab">
+                        <span class="file-icon"></span>
+                        <span>script.js</span>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <div class="line-numbers" id="line-numbers"></div>
+                    <textarea id="code-editor" spellcheck="false" placeholder="// Write your JavaScript code here..."></textarea>
+                    <div class="line-highlight" id="line-highlight"></div>
+                </div>
+                <div class="controls">
+                    <button id="btn-run" class="btn btn-primary">
+                        <span class="btn-icon">&#9654;</span>
+                        Run
+                    </button>
+                    <button id="btn-step" class="btn btn-secondary">
+                        <span class="btn-icon">&#10097;</span>
+                        Step
+                    </button>
+                    <button id="btn-pause" class="btn btn-secondary" disabled>
+                        <span class="btn-icon">&#10074;&#10074;</span>
+                        Pause
+                    </button>
+                    <button id="btn-reset" class="btn btn-secondary">
+                        <span class="btn-icon">&#8634;</span>
+                        Reset
+                    </button>
+                    <div class="speed-control">
+                        <label for="speed-slider">Speed:</label>
+                        <input type="range" id="speed-slider" min="100" max="2000" value="1000" step="100">
+                        <span id="speed-value">1.0s</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel - Visualization -->
+            <section class="visualization-panel">
+                <!-- Call Stack -->
+                <div class="viz-panel call-stack-panel">
+                    <div class="panel-header">
+                        <h3>Call Stack</h3>
+                        <span class="panel-badge" id="stack-count">0</span>
+                    </div>
+                    <div class="panel-content" id="call-stack">
+                        <div class="empty-state">Stack is empty</div>
+                    </div>
+                </div>
+
+                <!-- Memory Heap -->
+                <div class="viz-panel memory-heap-panel">
+                    <div class="panel-header">
+                        <h3>Memory Heap</h3>
+                        <span class="panel-badge" id="heap-count">0</span>
+                    </div>
+                    <div class="panel-content" id="memory-heap">
+                        <svg class="heap-arrows" id="heap-arrows"></svg>
+                        <div class="heap-objects" id="heap-objects">
+                            <div class="empty-state">No objects allocated</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scope Chain -->
+                <div class="viz-panel scope-chain-panel">
+                    <div class="panel-header">
+                        <h3>Scope Chain</h3>
+                        <span class="panel-badge" id="scope-count">0</span>
+                    </div>
+                    <div class="panel-content" id="scope-chain">
+                        <div class="empty-state">No active scopes</div>
+                    </div>
+                </div>
+
+                <!-- Event Loop -->
+                <div class="viz-panel event-loop-panel">
+                    <div class="panel-header">
+                        <h3>Event Loop</h3>
+                    </div>
+                    <div class="panel-content event-loop-content" id="event-loop">
+                        <div class="event-section">
+                            <div class="section-label">Web APIs</div>
+                            <div class="section-content" id="web-apis"></div>
+                        </div>
+                        <div class="event-section">
+                            <div class="section-label">Callback Queue</div>
+                            <div class="section-content" id="callback-queue"></div>
+                        </div>
+                        <div class="event-section microtask">
+                            <div class="section-label">Microtask Queue</div>
+                            <div class="section-content" id="microtask-queue"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Console Output -->
+        <div class="console-panel">
+            <div class="panel-header">
+                <h3>Console Output</h3>
+                <button id="btn-clear-console" class="btn-icon-only" title="Clear console">&#128465;</button>
+            </div>
+            <div class="console-content" id="console-output"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/stateManager.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/parser.js"></script>
+    <script src="js/executor.js"></script>
+    <script src="js/visualizer.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
