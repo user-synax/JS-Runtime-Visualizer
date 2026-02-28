@@ -66,7 +66,69 @@ var person = {
     greet: sayName
 };
 
-sayName();`
+sayName();`,
+
+        recursion: `// Recursion Example
+function factorial(n) {
+    console.log(n);
+    if (n <= 1) {
+        return 1;
+    }
+    return n;
+}
+
+var result = factorial(5);
+console.log(result);`,
+
+        callbacks: `// Callbacks & Event Loop
+console.log("1: Start");
+
+setTimeout(function() {
+    console.log("2: First timeout");
+}, 0);
+
+setTimeout(function() {
+    console.log("3: Second timeout");
+}, 100);
+
+Promise.resolve().then(() => {
+    console.log("4: Promise 1");
+});
+
+Promise.resolve().then(() => {
+    console.log("5: Promise 2");
+});
+
+console.log("6: End");`,
+
+        scope: `// Scope Chain Example
+var globalVar = "global";
+
+function outer() {
+    var outerVar = "outer";
+    
+    function inner() {
+        var innerVar = "inner";
+        console.log(innerVar);
+        console.log(outerVar);
+        console.log(globalVar);
+    }
+    
+    inner();
+}
+
+outer();`,
+
+        objects: `// Objects in Memory
+var person = {
+    name: "John",
+    age: 30
+};
+
+var colors = [1, 2, 3];
+
+console.log(person);
+console.log(colors);`
     };
 
     /**

@@ -7,8 +7,8 @@
     /* Colors */
     --bg-primary: #0f0f14;
     --bg-secondary: #13131a;
-    --bg-panel: rgba(20, 20, 30, 0.7);
-    --bg-panel-hover: rgba(25, 25, 40, 0.8);
+    --bg-panel: rgba(14, 14, 46, 0.7);
+    --bg-panel-hover: rgba(31, 31, 97, 0.8);
     --bg-input: rgba(15, 15, 25, 0.9);
     
     /* Accent Colors */
@@ -26,7 +26,7 @@
     
     /* Border Colors */
     --border-color: rgba(255, 255, 255, 0.08);
-    --border-glow: rgba(79, 158, 255, 0.3);
+    --border-glow: rgba(79, 158, 255, 0.568);
     
     /* Glow Effects */
     --glow-blue: 0 0 20px rgba(79, 158, 255, 0.3);
@@ -1000,6 +1000,8 @@ body {
 }
 
 /* Responsive Adjustments */
+
+/* Tablet */
 @media (max-width: 1200px) {
     .main-content {
         flex-direction: column;
@@ -1010,7 +1012,324 @@ body {
     }
     
     .visualization-panel {
-        height: 400px;
+        min-height: 400px;
+        flex: 1;
+    }
+    
+    .console-panel {
+        height: 100px;
+    }
+}
+
+/* Mobile Landscape & Small Tablets */
+@media (max-width: 900px) {
+    .container {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 14px;
+    }
+    
+    .logo-text {
+        font-size: 14px;
+    }
+    
+    .example-selector {
+        width: 100%;
+    }
+    
+    .example-selector select {
+        flex: 1;
+    }
+    
+    .visualization-panel {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, minmax(150px, 1fr));
+    }
+    
+    .controls {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .speed-control {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 0;
+        padding-top: 10px;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        justify-content: center;
+    }
+}
+
+/* Mobile Portrait */
+@media (max-width: 600px) {
+    html {
+        font-size: 13px;
+    }
+    
+    body {
+        overflow: auto;
+    }
+    
+    .container {
+        height: auto;
+        min-height: 100vh;
+        padding: 8px;
+        gap: 8px;
+    }
+    
+    .header {
+        padding: 10px 12px;
+        border-radius: var(--radius-md);
+    }
+    
+    .logo {
+        gap: 8px;
+    }
+    
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .logo-text {
+        font-size: 13px;
+    }
+    
+    .example-selector label {
+        font-size: 12px;
+    }
+    
+    .example-selector select {
+        font-size: 12px;
+        padding: 6px 28px 6px 10px;
+    }
+    
+    .main-content {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .code-panel {
+        min-height: 300px;
+        border-radius: var(--radius-md);
+    }
+    
+    .panel-header {
+        padding: 10px 12px;
+    }
+    
+    .panel-header h2, .panel-header h3 {
+        font-size: 11px;
+    }
+    
+    .file-tab {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+    
+    .line-numbers {
+        width: 36px;
+        padding: 12px 6px;
+        font-size: 11px;
+    }
+    
+    #code-editor {
+        padding: 12px;
+        font-size: 12px;
+    }
+    
+    .line-highlight {
+        left: 36px;
+    }
+    
+    .controls {
+        padding: 10px 12px;
+        gap: 6px;
+    }
+    
+    .btn {
+        padding: 6px 10px;
+        font-size: 12px;
+        gap: 4px;
+    }
+    
+    .btn-icon {
+        font-size: 9px;
+    }
+    
+    .btn-primary {
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .btn-secondary {
+        flex: 1;
+        justify-content: center;
+    }
+    
+    #speed-slider {
+        width: 80px;
+    }
+    
+    .visualization-panel {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, minmax(180px, auto));
+        gap: 8px;
+    }
+    
+    .viz-panel {
+        border-radius: var(--radius-md);
+    }
+    
+    .panel-content {
+        padding: 10px;
+    }
+    
+    .stack-frame {
+        padding: 10px;
+    }
+    
+    .frame-name {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+    
+    .frame-var {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+    
+    .heap-object {
+        padding: 8px 10px;
+    }
+    
+    .heap-type {
+        font-size: 9px;
+    }
+    
+    .heap-content {
+        font-size: 11px;
+    }
+    
+    .heap-ref {
+        font-size: 9px;
+    }
+    
+    .scope-card {
+        padding: 10px;
+    }
+    
+    .scope-name {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+    
+    .scope-type {
+        font-size: 9px;
+    }
+    
+    .scope-var {
+        font-size: 11px;
+    }
+    
+    .event-section {
+        min-height: 50px;
+        padding: 8px;
+    }
+    
+    .section-label {
+        font-size: 9px;
+        margin-bottom: 6px;
+    }
+    
+    .event-task {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    
+    .task-timer {
+        font-size: 8px;
+    }
+    
+    .console-panel {
+        height: 100px;
+        border-radius: var(--radius-md);
+    }
+    
+    .console-content {
+        padding: 10px;
+        font-size: 11px;
+    }
+    
+    .console-line {
+        padding: 3px 0;
+    }
+    
+    .this-indicator {
+        font-size: 10px;
+        padding: 3px 6px;
+        margin-top: 6px;
+    }
+    
+    .panel-badge {
+        min-width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+    
+    .empty-state {
+        font-size: 12px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 380px) {
+    .container {
+        padding: 6px;
+    }
+    
+    .header {
+        padding: 8px 10px;
+    }
+    
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+    }
+    
+    .logo-text {
+        font-size: 12px;
+    }
+    
+    .btn {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+    
+    .controls {
+        padding: 8px 10px;
+    }
+    
+    .speed-control label {
+        font-size: 11px;
+    }
+    
+    #speed-slider {
+        width: 60px;
+    }
+    
+    #speed-value {
+        font-size: 11px;
+        min-width: 30px;
     }
 }
 
